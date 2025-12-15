@@ -30,9 +30,9 @@ public record ServerBuildInfoImpl(
     private static final String ATTRIBUTE_GIT_BRANCH = "Git-Branch";
     private static final String ATTRIBUTE_GIT_COMMIT = "Git-Commit";
 
-    private static final String BRAND_PAPER_NAME = "Paper";
+    private static final String BRAND_PAPER_NAME = "Orbital";
 
-    private static final String BUILD_DEV = "DEV";
+    private static final String BUILD_DEV = "Pratech";
 
     public ServerBuildInfoImpl() {
         this(JarManifests.manifest(CraftServer.class));
@@ -42,7 +42,7 @@ public record ServerBuildInfoImpl(
         this(
             getManifestAttribute(manifest, ATTRIBUTE_BRAND_ID)
                 .map(Key::key)
-                .orElse(BRAND_PAPER_ID),
+                .orElse(Key.key("orbital", "pratech")),
             getManifestAttribute(manifest, ATTRIBUTE_BRAND_NAME)
                 .orElse(BRAND_PAPER_NAME),
             SharedConstants.getCurrentVersion().id(),
@@ -67,33 +67,27 @@ public record ServerBuildInfoImpl(
     @Override
     public @NotNull String asString(final @NotNull StringRepresentation representation) {
         final StringBuilder sb = new StringBuilder();
+
         sb.append(this.minecraftVersionId);
-        sb.append('-');
-        if (this.buildNumber.isPresent()) {
-            sb.append(this.buildNumber.getAsInt());
-        } else {
-            sb.append(BUILD_DEV);
-        }
-        final boolean hasGitBranch = this.gitBranch.isPresent();
-        final boolean hasGitCommit = this.gitCommit.isPresent();
-        if (hasGitBranch || hasGitCommit) {
-            sb.append('-');
-        }
-        if (hasGitBranch && representation == StringRepresentation.VERSION_FULL) {
-            sb.append(this.gitBranch.get());
-            if (hasGitCommit) {
-                sb.append('@');
-            }
-        }
-        if (hasGitCommit) {
-            sb.append(this.gitCommit.get());
-        }
-        if (representation == StringRepresentation.VERSION_FULL) {
-            sb.append(' ');
-            sb.append('(');
+        final String apiVersion = getManifestAttribute(
+            JarManifests.manifest(CraftServer.class),
+            "Api-Version"
+        ).orElse("R0.1-SNAPSHOT");
+
+        sb.append("-");
+        sb.append(apiVersion);
+
+        this.gitCommit.ifPresent(commit -> {
+            sb.append(" (Git: ");
+            sb.append(commit.substring(0, Math.min(7, commit.length())));
+            sb.append(")");
+        });
+
+        if (representation == StringRepresentation.VERSION_FULL && this.buildTime != null) {
+            sb.append(" | Built by Pratech on ");
             sb.append(this.buildTime.truncatedTo(ChronoUnit.SECONDS));
-            sb.append(')');
         }
+
         return sb.toString();
     }
 

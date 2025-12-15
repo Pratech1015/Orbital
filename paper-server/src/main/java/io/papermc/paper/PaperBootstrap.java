@@ -33,6 +33,7 @@ public final class PaperBootstrap {
 
         final ServerBuildInfo bi = ServerBuildInfo.buildInfo();
         return List.of(
+            "Starting OrbitalMC...",
             String.format(
                 "Running Java %s (%s %s; %s %s) on %s %s (%s)",
                 javaSpecVersion,
