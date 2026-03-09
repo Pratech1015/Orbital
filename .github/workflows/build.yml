@@ -38,11 +38,35 @@ jobs:
           name: orbital-server
           path: build/libs/*.jar
 
+      - name: Get Minecraft version
+        id: mcver
+        run: |
+          VERSION=$(grep mcVersion gradle.properties | cut -d '=' -f2)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Determine release number
+        id: version
+        run: |
+          VERSION="${{ steps.mcver.outputs.version }}"
+          COUNT=$(gh release list --limit 100 | grep "Orbital $VERSION" | wc -l)
+
+          if [ "$COUNT" -eq 0 ]; then
+            NAME="Orbital $VERSION"
+            TAG="orbital-$VERSION"
+          else
+            NUM=$((COUNT+1))
+            NAME="Orbital $VERSION #$NUM"
+            TAG="orbital-$VERSION-$NUM"
+          fi
+
+          echo "name=$NAME" >> $GITHUB_OUTPUT
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: build-${{ github.run_number }}
-          name: Orbital Build ${{ github.run_number }}
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: ${{ steps.version.outputs.name }}
           files: build/libs/*.jar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
