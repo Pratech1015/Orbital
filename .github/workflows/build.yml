@@ -22,6 +22,10 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
+      - name: Github User Configuration
+        run: |
+             git config --global user.email "pragyan.krish3@gmail.com"
+             git config --global user.name "Pratech1015"
       - name: Apply patches
         run: ./gradlew applyPatches
 
