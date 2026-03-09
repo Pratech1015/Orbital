@@ -69,4 +69,4 @@ jobs:
         with:
           tag_name: ${{ steps.version.outputs.tag }}
           name: ${{ steps.version.outputs.name }}
-          files: build/libs/*.jar
+          files: paper-server/build/libs/*.jar
