@@ -1,5 +1,5 @@
-Paper [![Paper Build Status](https://img.shields.io/github/actions/workflow/status/PaperMC/Paper/build.yml?branch=main)](https://github.com/PaperMC/Paper/actions)
-[![Discord](https://img.shields.io/discord/289587909051416579.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/papermc)
+Orbital [![Orbital Build Status](https://img.shields.io/github/actions/workflow/status/Pratech1015/Orbital/build.yml?branch=main)](https://github.com/Pratech1015/Orbital/actions)
+[![Discord](https://img.shields.io/discord/289587909051416579.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/XgeRUXma6Q)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/papermc?label=GitHub%20Sponsors)](https://github.com/sponsors/PaperMC)
 [![Open Collective](https://img.shields.io/opencollective/all/papermc?label=OpenCollective%20Sponsors)](https://opencollective.com/papermc)
 ===========
@@ -8,23 +8,23 @@ The most widely used, high-performance Minecraft server that aims to fix gamepla
 
 
 **Support and Project Discussion:**
-- [Our forums](https://forums.papermc.io/) or [Discord](https://discord.gg/papermc)
+- [Our forums](https://forums.papermc.io/) or [Discord](https://discord.gg/XgeRUXma6Q)
 
 How To (Server Admins)
 ------
 Paperclip is a jar file that you can download and run just like a normal jar file.
 
-Download Paper from our [downloads page](https://papermc.io/downloads/paper).
+Download Orbital from our [github releases](https://github.com/Pratech1015/Orbital/releases).
 
 Run the Paperclip jar directly from your server. Just like old times
 
-* Documentation on using Paper: [docs.papermc.io](https://docs.papermc.io)
-* For a sneak peek at upcoming features, [see here](https://github.com/PaperMC/Paper/projects)
+* Documentation on using Orbital: [docs.papermc.io](https://docs.papermc.io)
+* For a sneak peek at upcoming features, [see here](https://github.com/Pratech1015/Orbital/projects)
 
 How To (Plugin Developers)
 ------
 * See our API [here](paper-api)
-* See upcoming, pending, and recently added API [here](https://github.com/orgs/PaperMC/projects/2/views/4)
+* See upcoming, pending, and recently added API [here](https://github.com/orgs/Pratech1015/projects/2/views/4)
 * Paper API javadocs here: [papermc.io/javadocs](https://papermc.io/javadocs/)
 #### Repository (for paper-api)
 ##### Maven
@@ -75,7 +75,7 @@ See [Contributing](CONTRIBUTING.md)
 
 Old Versions (1.21.3 and below)
 ------
-For branches of versions 1.8-1.21.3, please see our [archive repository](https://github.com/PaperMC/Paper-archive).
+For branches of versions 1.8-1.21.3, please see our [archive repository](https://github.com/Pratech1015/Orbital-Archive).
 
 Support Us
 ------
